@@ -6,7 +6,7 @@ displaying the current GameState object
 import pygame as p
 import ChessEngine
 
-WIDTH = HEIGHT = 400 #400 is another option
+WIDTH = HEIGHT = 512 #400 is another option
 DIMENSION = 8 #dimension of a chess board are 8x8
 SQ_SIZE = HEIGHT // DIMENSION
 MAX_FPS = 15 #for animaitons later on
