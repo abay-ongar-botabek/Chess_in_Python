@@ -39,8 +39,35 @@ def main():
         for e in p.event.get():
             if e.type == p.QUIT:
                 running = False
+
         clock.tick(MAX_FPS)
         p.display.flip()
+        drawGameState(screen,gs)
+
+"""
+Responsible for all the graphics within a current game state
+"""
+def drawGameState(screen, gs):
+    drawBoard(screen) #draw the squares on the board
+    # add in piece highlighting or move suggestions later
+    drawPieces(screen, gs.board) #draw pieces on top of those squares
+
+"""
+Draw the squares on the board
+"""
+def drawBoard(screen):
+    colors = [p.Color("white"), p.Color("#769656")]
+    for r in range(DIMENSION):
+        for c in range(DIMENSION):
+            color = colors[((r+c) % 2)]
+            p.draw.rect(screen, color, p.Rect(c*SQ_SIZE, r*SQ_SIZE, SQ_SIZE, SQ_SIZE))
+
+
+"""
+Draw the pieces on the board, using the current GameState.board
+"""
+def drawPieces(screen, board):
+    pass
 
 if __name__ == "__main__":
     main()
