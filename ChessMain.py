@@ -4,7 +4,7 @@ displaying the current GameState object
 """
 
 import pygame as p
-from Chess import ChessEngine
+import ChessEngine
 
 WIDTH = HEIGHT = 512 #400 is another option
 DIMENSION = 8 #dimension of a chess board are 8x8
@@ -32,7 +32,15 @@ def main():
     screen = p.display.set_mode((WIDTH, HEIGHT))
     clock = p.time.Clock()
     screen.fill(p.Color("white"))
-    gs = ChessEngine.GameState
-    print (gs.board)
+    gs = ChessEngine.GameState()
+    loadImages()
+    running = True
+    while running:
+        for e in p.event.get():
+            if e.type == p.QUIT:
+                running = False
+        clock.tick(MAX_FPS)
+        p.display.flip()
 
-main()
+if __name__ == "__main__":
+    main()
