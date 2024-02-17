@@ -6,7 +6,7 @@ displaying the current GameState object
 import pygame as p
 import ChessEngine
 
-WIDTH = HEIGHT = 512 #400 is another option
+WIDTH = HEIGHT = 400 #400 is another option
 DIMENSION = 8 #dimension of a chess board are 8x8
 SQ_SIZE = HEIGHT // DIMENSION
 MAX_FPS = 15 #for animaitons later on
@@ -67,7 +67,11 @@ def drawBoard(screen):
 Draw the pieces on the board, using the current GameState.board
 """
 def drawPieces(screen, board):
-    pass
+    for r in range(DIMENSION):
+        for c in range(DIMENSION):
+            piece = board[r][c]
+            if piece != "--": #not empty square
+                screen.blit(IMAGES[piece], p.Rect(c*SQ_SIZE, r*SQ_SIZE, SQ_SIZE, SQ_SIZE))
 
 if __name__ == "__main__":
     main()
