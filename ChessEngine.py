@@ -23,11 +23,19 @@ class GameState():
         self.whiteToMove = True
         self.moveLog = []
 
+    """Takes a Move as a parameter and executes it"""
     def makeMove(self, move):
         self.board[move.startRow][move.startCol] = "--"
         self.board[move.endRow][move.endCol] = move.pieceMove
         self.moveLog.append(move) #log the move so we can undo it or log move history
         self.whiteToMove = not self.whiteToMove #swap players
+
+    def undoMove(self):
+        if len(self.moveLog) != 0: #make sure there is move to undo
+            move = self.moveLog.pop()
+            self.board[move.startRow][move.startCol] = move.pieceMove
+            self.board[move.endRow][move.endCol] = move.pieceCaptured
+            self.whiteToMove = not self.whiteToMove #swich truns back
 
 class Move():
     # maps keys to values
